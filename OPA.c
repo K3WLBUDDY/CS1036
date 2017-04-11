@@ -16,11 +16,11 @@ int main()
 	output = fopen("Inputs/output.txt", "w");
 
 	locctr = 0;
-	strcpy(opcode, "NULL");
+	strcpy(opCode, "NULL");
 	strcpy(symCode, "NULL");
-	while(strcmp(opCode, "END"!=0))
+	while(strcmp(opCode, "END")!=0)
 	{
-		fscanf("%s\t%s\t%s\t%s\t\n", label, opCode, reg, operand);
+		fscanf(input, "%s\t%s\t%s\t%s\t\n", label, opCode, reg, operand);
 
 		if(strcmp(opCode, "START")==0)
 			locctr=atoi(operand);
@@ -39,7 +39,7 @@ int main()
 
 		locctr++;
 
-		fprintf(input, "%d\t%s\t%s\t%s\t%s\t\n", locctr, label, instructionType+mnemonicInfo, reg, operand);
+		fprintf(input, "%d\t%s\t%s%s%s\t%s\t%s\t\n", locctr, label, instructionType,"+",mnemonicInfo, reg, operand);
 	}
 
 	length = locctr - start;
