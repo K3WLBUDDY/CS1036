@@ -1,3 +1,5 @@
+//TO-DO - CHECK VALUES OF LOCATION COUNTER
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,28 +33,28 @@ int main()
 			start = atoi(operand);
 			locctr = start;
 		}
-		if(strcmp(opCode, "DS")==0)
+
+		else if(strcmp(opCode, "DS")==0)
 			locctr+=1;	
 
-		if(strcmp(opCode, "DC")==0)
-			locctr = atoi(operand);
+		else if(strcmp(opCode, "DC")==0)
+			locctr+= atoi(operand);
+
+		else
+			locctr+=1;
 
 		if(strcmp(label, "**")!=0)
 			fprintf(ft2, "%s\t%d\n", label, locctr);
 		
 		while(strcmp(symCode, opCode)!=0)
-		{	
+		{
 			fscanf(ft3, "%s\t%s\t%s\n", symCode, instructionType, mnemonicInfo);
-			if(strcmp(symCode, opCode)==0)
-			{
-				printf("\n %s\t%s\t%s\n", symCode, instructionType, mnemonicInfo);
-				strcpy(symCode, "NULL");
-				rewind(ft3);
-				break;
-			}
 		}
+
+		printf("\n %s\t%s\t%s\n", symCode, instructionType, mnemonicInfo);
+		strcpy(symCode, "NULL");
+		rewind(ft3);
 		
-		locctr++;
 
 		fprintf(ft4, "%d\t%s\t%s%s%s\t%s\t%s\t\n", locctr, label, instructionType,"+",mnemonicInfo, reg, operand);
 	}
