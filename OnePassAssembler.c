@@ -13,10 +13,10 @@ int main()
 
 	int start, locctr=0, length;
 
-	ft1 = fopen("Inputs/input.txt", "r");
-	ft2 = fopen("Inputs/symbol.txt", "w");
-	ft3 = fopen("Inputs/optab.txt", "r");
-	ft4 = fopen("Inputs/output.txt", "w");
+	ft1 = fopen("Inputs/AssemblerInput.txt", "r");
+	ft2 = fopen("Outputs/AssemblerSymbol.txt", "w");
+	ft3 = fopen("Inputs/AssemblerOptab.txt", "r");
+	ft4 = fopen("Outputs/AssemblerPassOneOutput.txt", "w");
 
 	strcpy(opCode, "NULL");
 	strcpy(symCode, "NULL");
