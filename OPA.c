@@ -11,14 +11,12 @@ int main()
 
 	char label[10], opCode[10], symCode[10], reg[4], operand[10], instructionType[2], mnemonicInfo[2];
 
-	int start, locctr, length;
+	int start, locctr=0, length;
 
 	ft1 = fopen("Inputs/input.txt", "r");
 	ft2 = fopen("Inputs/symbol.txt", "w");
 	ft3 = fopen("Inputs/optab.txt", "r");
 	ft4 = fopen("Inputs/output.txt", "w");
-
-	locctr = 0;
 
 	strcpy(opCode, "NULL");
 	strcpy(symCode, "NULL");
@@ -26,7 +24,6 @@ int main()
 	while(strcmp(opCode, "END")!=0)
 	{
 		fscanf(ft1, "%s\t%s\t%s\t%s\t\n", label, opCode, reg, operand);
-		printf("\n %s\t%s\t%s\t%s\t\n", label, opCode, reg, operand);
 
 		if(strcmp(opCode, "START")==0)
 		{	
@@ -51,7 +48,6 @@ int main()
 			fscanf(ft3, "%s\t%s\t%s\n", symCode, instructionType, mnemonicInfo);
 		}
 
-		printf("\n %s\t%s\t%s\n", symCode, instructionType, mnemonicInfo);
 		strcpy(symCode, "NULL");
 		rewind(ft3);
 		
