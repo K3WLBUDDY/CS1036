@@ -4,27 +4,33 @@
 
 int main()
 {
-	FILE *input, *symbol, *optab, *output;
+
+	FILE *ft1, *ft2, *ft3, *ft4; 
 
 	char label[10], opCode[10], symCode[10], reg[4], operand[10], instructionType[2], mnemonicInfo[2];
 
 	int start, locctr, length;
 
-	input = fopen("Inputs/input.txt", "r");
-	symbol = fopen("Inputs/symbol.txt", "w");
-	optab = fopen("Inputs/optab.txt", "r");
-	output = fopen("Inputs/output.txt", "w");
+	ft1 = fopen("Inputs/input.txt", "r");
+	ft2 = fopen("Inputs/symbol.txt", "w");
+	ft3 = fopen("Inputs/optab.txt", "r");
+	ft4 = fopen("Inputs/output.txt", "w");
 
 	locctr = 0;
+
 	strcpy(opCode, "NULL");
 	strcpy(symCode, "NULL");
+
 	while(strcmp(opCode, "END")!=0)
 	{
-		fscanf(input, "%s\t%s\t%s\t%s\t\n", label, opCode, reg, operand);
+		fscanf(ft1, "%s\t%s\t%s\t%s\t\n", label, opCode, reg, operand);
+		printf("\n %s\t%s\t%s\t%s\t\n", label, opCode, reg, operand);
 
 		if(strcmp(opCode, "START")==0)
-			locctr=atoi(operand);
-
+		{	
+			start = atoi(operand);
+			locctr = start;
+		}
 		if(strcmp(opCode, "DS")==0)
 			locctr+=1;	
 
@@ -32,24 +38,33 @@ int main()
 			locctr = atoi(operand);
 
 		if(strcmp(label, "**")!=0)
-			fprintf(symbol, "%s\t%d\n", label, locctr);
-
+			fprintf(ft2, "%s\t%d\n", label, locctr);
+		
 		while(strcmp(symCode, opCode)!=0)
-			fscanf(optab, "%s\t%s\t%d\n", symCode, instructionType, mnemonicInfo);
-
+		{	
+			fscanf(ft3, "%s\t%s\t%s\n", symCode, instructionType, mnemonicInfo);
+			if(strcmp(symCode, opCode)==0)
+			{
+				printf("\n %s\t%s\t%s\n", symCode, instructionType, mnemonicInfo);
+				strcpy(symCode, "NULL");
+				rewind(ft3);
+				break;
+			}
+		}
+		
 		locctr++;
 
-		fprintf(input, "%d\t%s\t%s%s%s\t%s\t%s\t\n", locctr, label, instructionType,"+",mnemonicInfo, reg, operand);
+		fprintf(ft4, "%d\t%s\t%s%s%s\t%s\t%s\t\n", locctr, label, instructionType,"+",mnemonicInfo, reg, operand);
 	}
 
 	length = locctr - start;
 
 	printf("\n Length of Pass 1 of 2 Pass Assembler : %d", length);
 
-	fclose(input);
-	fclose(symbol);
-	fclose(optab);
-	fclose(output);
+	fclose(ft1);
+	fclose(ft2);
+	fclose(ft3);
+	fclose(ft4);
 
 	return 0;
 }
