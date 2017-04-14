@@ -10,6 +10,9 @@
 **	START	100	
 **	READ	A	
 **	READ	B	
+**	MOVE	A,T	
+**	MOVE	B,A	
+**	MOVE	T,B	
 **	PRINT	A	
 **	PRINT	B	
 **	STOP	==	

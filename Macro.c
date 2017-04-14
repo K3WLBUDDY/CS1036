@@ -4,7 +4,7 @@
 
 struct macro
 {
-	char mlabel[20], mopCode[20], moperand[20];
+	char mlabel[20], mopCode[20], moperand[20], mname[3];
 	//int mlength;
 };
 
@@ -38,16 +38,18 @@ int main()
 		if(strcmp(opCode, "MACRO")==0)
 		{
 			//m[macroCount].mlength=0;
-			strcpy(m[macroCount].moperand, operand);
-			
-
-			fscanf(input, "%s\t%s\t%s\t\n", label, opCode, operand);
-			printf("\n %s\t%s\t%s\t\n", label, opCode, operand);
-
-			while(strcmp(m[macroCount].mopCode, "MEND")!=0)
+			strcpy(m[macroCount].mname, operand);
+			while(strcmp(opCode, "MEND")!=0)
 			{
-				fscanf(input, "%s\t%s\t%s\t\n", m[macroCount].mlabel, m[macroCount].mopCode, m[macroCount].moperand);
-				printf("\n %s\t%s\t%s\t\n", m[macroCount].mlabel, m[macroCount].mopCode, m[macroCount].moperand);
+				fscanf(input, "%s\t%s\t%s\t\n", label, opCode, operand);
+
+				if(strcmp(opCode, "MEND")!=0)
+				{
+					strcpy(m[macroCount].mlabel, label);
+					strcpy(m[macroCount].mopCode, opCode);
+					strcpy(m[macroCount].moperand, operand);
+				}
+
 			}
 
 			macroCount++;
@@ -66,10 +68,10 @@ int main()
 
 			for(i=0;i<macroCount;i++)
 			{
-				if(strcmp(operand, m[i].moperand)==0)
+				if(strcmp(operand, m[i].mname)==0)
 						fprintf(output, "%s\t%s\t%s\t\n", m[i].mlabel, m[i].mopCode, m[i].moperand);
 					else
-						printf("\n\n %d %s", i,m[i].moperand);
+						printf("\n\n %d %s", i,m[i].mname);
 			}
 
 		}
