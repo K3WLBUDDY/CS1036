@@ -1,5 +1,3 @@
-//TO-DO - CHECK VALUES OF LOCATION COUNTER
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,9 +29,6 @@ int main()
 			locctr = start;
 		}
 
-		else if(strcmp(opCode, "DS")==0)
-			locctr+=1;	
-
 		else if(strcmp(opCode, "DC")==0)
 			locctr+= atoi(operand);
 
@@ -51,7 +46,6 @@ int main()
 		strcpy(symCode, "NULL");
 		rewind(optab);
 		
-
 		fprintf(output, "%d\t%s\t%s%s%s\t%s\t%s\t\n", locctr, label, instructionType,"+",mnemonicInfo, reg, operand);
 	}
 
