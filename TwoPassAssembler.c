@@ -4,11 +4,12 @@
 
 int main()
 {
-	FILE *ft1;
+	FILE *input, *output, *optab, *symbol;
 
-	ft1 = fopen("Inputs/input.txt", "r");
+	input = fopen("Outputs/AssemblerPassOneOutput.txt", "r");
+	output = fopen("Outputs/AssemblerPassTwoOutput.txt", "w");
+	optab = fopen("Inputs/AssemblerOptab.txt", "r");
+	symbol = fopen("Outputs/AssemblerSymbol.txt");
 
-	printf("\n fdvd");
-
-	return 0;
+	
 }

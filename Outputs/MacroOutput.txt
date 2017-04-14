@@ -1,0 +1,15 @@
+**	MACRO	M1	
+**	MOVE	A,T	
+**	MEND	==	
+**	MACRO	M2	
+**	MOVE	T,B	
+**	MEND	==	
+**	MACRO	M3	
+**	MOVE	B,A	
+**	MEND	==	
+**	START	100	
+**	READ	A	
+**	READ	B	
+**	PRINT	A	
+**	PRINT	B	
+**	STOP	==	

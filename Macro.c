@@ -4,43 +4,50 @@
 
 struct macro
 {
-	char label[10][2], opCode[10][10], operand[10][10];
-	int length;
+	char mlabel[20], mopCode[20], moperand[20];
+	//int mlength;
 };
 
 int main()
 {
 	FILE *input, *output;
-
-	printf("\n Hello");
-
-	char label[2], opCode[10], operand[10];
-
-	int macroCount=0, i=0,j=0;
-
-	struct macro m[10];
-
+	
 	input = fopen("Inputs/MacroInput.txt", "r");
 	output = fopen("Outputs/MacroOutput.txt", "w");
 
+	char label[20], opCode[20], operand[20];
+
+	printf("\n Hello2");
+
+	int macroCount=0, i=0;
+
+	printf("\n redsf");
+
+	struct macro m[100];
+	
 	strcpy(opCode, "NULL");
+	printf("%s", opCode);
 
 	while(strcmp(opCode, "STOP")!=0)
 	{
+		printf("\n WOWOWO %s", opCode);
 		fscanf(input, "%s\t%s\t%s\t\n", label, opCode, operand);
+		printf("\n Test3");
+		printf("\n %s\t%s\t%s\t\n", label, opCode, operand);
 
 		if(strcmp(opCode, "MACRO")==0)
 		{
-			m[macroCount].length=0;
-			strcpy(m[macroCount].operand[m[macroCount].length], operand);
+			//m[macroCount].mlength=0;
+			strcpy(m[macroCount].moperand, operand);
 			
 
 			fscanf(input, "%s\t%s\t%s\t\n", label, opCode, operand);
+			printf("\n %s\t%s\t%s\t\n", label, opCode, operand);
 
-			while(strcmp(opCode, "MEND")!=0)
+			while(strcmp(m[macroCount].mopCode, "MEND")!=0)
 			{
-				fscanf(input, "%s\t%s\t%s\t\n", m[macroCount].label[m[macroCount].length], m[macroCount].opCode[m[macroCount].length], m[macroCount].operand[m[macroCount].length]);
-				m[macroCount].length++;
+				fscanf(input, "%s\t%s\t%s\t\n", m[macroCount].mlabel, m[macroCount].mopCode, m[macroCount].moperand);
+				printf("\n %s\t%s\t%s\t\n", m[macroCount].mlabel, m[macroCount].mopCode, m[macroCount].moperand);
 			}
 
 			macroCount++;
@@ -48,6 +55,7 @@ int main()
 	}
 
 	strcpy(opCode, "NULL");
+	rewind(input);
 
 	while(strcmp(opCode, "STOP")!=0)
 	{
@@ -58,9 +66,10 @@ int main()
 
 			for(i=0;i<macroCount;i++)
 			{
-				if(strcmp(operand, m[i].operand[0])==0)
-					for(j=0;j<m[i].length;j++)
-						fprintf(output, "%s\t%s\t%s\t\n", m[i].label[j], m[i].opCode[j], m[i].operand[j]);
+				if(strcmp(operand, m[i].moperand)==0)
+						fprintf(output, "%s\t%s\t%s\t\n", m[i].mlabel, m[i].mopCode, m[i].moperand);
+					else
+						printf("\n\n %d %s", i,m[i].moperand);
 			}
 
 		}
@@ -71,4 +80,6 @@ int main()
 
 	fclose(input);
 	fclose(output);
+
+	return 0;
 }
