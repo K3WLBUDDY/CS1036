@@ -11,21 +11,29 @@ int main()
 	optab = fopen("Inputs/AssemblerOptab.txt", "r");
 	symbol = fopen("Outputs/AssemblerSymbol.txt", "r");
 
-	char label[10], mnemonic[5], reg[5], operand[10], regNum[5];
+	char label[10], mnemonic[5], reg[5], operand[10], regNum[5], locctr[10];
 
-	char sym[10], symAddr[10], mnemAddr[3];
+	char sym[10], symAddr[10], mnemAddr[3], mnemInfo[10], symbolAddress[10];
 
-	int start, locctr;
+	int count=0;
+
+	
 
 	strcpy(mnemonic, "NULL");
-	strcpy(symbol, "NULL");
+	//strcpy(symbolAddress, "NULL");
 	strcpy(mnemInfo, "NULL");
+	strcpy(operand, "NULL");
 
-	while(strcmp(mnemonic, "AD+00")!=0)
+	//while(strcmp(mnemonic, "AD+00")!=0&&strcmp(operand,"==")!=0)
+	while(strcmp(operand, "==")!=0 && strcpy(mnemonic, "AD+00")!=0)
 	{
-		strncpy(mnemAddr, mnemonic+1, 3);
-
 		fscanf(input, "%s\t%s\t%s\t%s\t%s\t\n", locctr, label, mnemonic, reg, operand);
+
+		strncpy(mnemAddr, mnemonic+2, 3);
+
+		
+		//printf("\n\n %s\t%s\t%s\t%s\t%s\t\n", locctr, label, mnemonic, reg, operand);
+		//break;
 
 		if(strcmp(mnemonic, "AD+01")==0)
 			continue;
@@ -48,9 +56,13 @@ int main()
 		while(!feof(symbol))
 		{
 			fscanf(symbol, "%s\t%s\t\n", sym, symbolAddress);
+			printf("\n %s\t%s\t\n", sym, symbolAddress);
 
 			if(strcmp(sym, operand)==0)
+			{
 				strcpy(symAddr, symbolAddress);
+				break;
+			}
 
 			else if(strcmp(mnemonic, "AD+00")==0)
 				strcpy(symAddr, "000");
