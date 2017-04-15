@@ -20,20 +20,14 @@ int main()
 	
 
 	strcpy(mnemonic, "NULL");
-	//strcpy(symbolAddress, "NULL");
 	strcpy(mnemInfo, "NULL");
 	strcpy(operand, "NULL");
 
-	//while(strcmp(mnemonic, "AD+00")!=0&&strcmp(operand,"==")!=0)
 	while(strcmp(operand, "==")!=0 && strcpy(mnemonic, "AD+00")!=0)
 	{
 		fscanf(input, "%s\t%s\t%s\t%s\t%s\t\n", locctr, label, mnemonic, reg, operand);
 
 		strncpy(mnemAddr, mnemonic+2, 3);
-
-		
-		//printf("\n\n %s\t%s\t%s\t%s\t%s\t\n", locctr, label, mnemonic, reg, operand);
-		//break;
 
 		if(strcmp(mnemonic, "AD+01")==0)
 			continue;
