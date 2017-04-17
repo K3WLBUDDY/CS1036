@@ -1,4 +1,4 @@
-// Use strtok(str, delimiter). Sends it to a char*. Don't use malloc
+// Okay, this gets complicated :s
 
 #include <stdio.h>
 #include <string.h>
@@ -33,27 +33,31 @@ void checkRepeat(int currentLength)
 		}
 	}
 
-	printf("\n Final Array of Unique Symbols : ");
-
-	for(i=0;i<currentLength;i++)
-		printf("\n\n %s", finalArray[i]);
+	
 }
 
 int main()
 {
-	int states, inputs,i=0,j=0;
+	int states, inputs,i=0,j=0,x=0,k=0;
 
 	char transition[10][10][10];
 
-	//int transitionLength[10][10];
+	for(i=0;i<10;i++)
+		for(j=0;j<10;j++)
+			strcpy(transition[i][j], "NULL");
 
 	int size;
 
 	int inputSymbol = 65;
+	int symbol;
 
 	char uniqueSymbols[10][10];
+	char individualSymbol[10];
+	char *token;
 
-	printf("\t\t NFA TO DFA CONVERTER");
+	const char delimiter[2] = ",";
+
+	printf("\t\t NFA TO DFA CONVERTER\n");
 
 	printf("\n Seperate State Transitions with a Comma\n");
 	printf("\n Enter X for No Transition for a particular Input");
@@ -110,6 +114,56 @@ int main()
 			strcpy(finalArray[length++],transition[i][j]);
 			checkRepeat(length);
 		}
-	return 0;
+	
 	}
+
+	for(i=0; i<length; i++)
+	{
+		strcpy(individualSymbol, finalArray[i]);
+
+		if(strlen(individualSymbol)==1)
+		{
+			symbol = atoi(individualSymbol);
+
+			for(j=0;j<inputs;j++)
+			{
+				if(strcmp(transition[symbol][j],"NULL")==0)
+					strcpy(transition[symbol][j], "X");
+				printf("\n  	%c", inputSymbol++);
+				printf("\n  %d -----> %s", symbol, transition[symbol][j]);
+			}
+			inputSymbol=65;
+		}
+
+		else
+		{
+			k=0;
+
+			token = strtok(individualSymbol, delimiter);
+
+			while(token!=NULL)
+			{
+
+				//printf("\n %s", token);
+				strcpy(uniqueSymbols[k++], token);
+
+				token = strtok(NULL, delimiter);
+			}
+
+			for(j=0;j<inputs;j++)
+			{
+				printf("\n        %c", inputSymbol++);
+				printf("\n  %s -------> ",finalArray[i]);
+
+				for(x=0;x<k;x++)
+					printf("%s ,",transition[atoi(uniqueSymbols[x])][j]);
+
+			}
+
+			inputSymbol=65;
+		}
+
+	}
+
+	return 0;
 }
