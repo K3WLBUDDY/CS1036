@@ -60,7 +60,7 @@ int main()
 	printf("\t\t NFA TO DFA CONVERTER\n");
 
 	printf("\n Seperate State Transitions with a Comma\n");
-	printf("\n Enter X for No Transition for a particular Input");
+	printf("\n Enter X for No Transition for a particular Input\n");
 
 
 	printf("\n Enter the No. of States : ");
@@ -102,7 +102,7 @@ int main()
 		inputSymbol=65;
 	}
 
-	printf("\n THE NFA CONVERTED TO DFA : ");
+	printf("\n\n THE NFA CONVERTED TO DFA : \n\n");
 
 	strcpy(finalArray[0],"0");
 	length++;
@@ -143,8 +143,6 @@ int main()
 
 			while(token!=NULL)
 			{
-
-				//printf("\n %s", token);
 				strcpy(uniqueSymbols[k++], token);
 
 				token = strtok(NULL, delimiter);
@@ -153,7 +151,7 @@ int main()
 			for(j=0;j<inputs;j++)
 			{
 				printf("\n        %c", inputSymbol++);
-				printf("\n  %s -------> ",finalArray[i]);
+				printf("\n  %s -----> ",finalArray[i]);
 
 				for(x=0;x<k;x++)
 					printf("%s ,",transition[atoi(uniqueSymbols[x])][j]);
