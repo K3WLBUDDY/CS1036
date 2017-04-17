@@ -10,7 +10,17 @@ int main()
 
 	//int transitionLength[10][10];
 
+	int size;
+
 	int inputSymbol = 65;
+
+	char uniqueSymbols[10][10];
+
+	printf("\t\t NFA TO DFA CONVERTER");
+
+	printf("\n Seperate State Transitions with a Comma\n");
+	printf("\n Enter X for No Transition for a particular Input");
+
 
 	printf("\n Enter the No. of States : ");
 	scanf("%d", &states);
@@ -22,7 +32,6 @@ int main()
 	{
 
 		printf("\n Enter NFA for State %d : \n", i);
-		printf("\n Seperate State Transitions with a Comma\n");
 
 		for(j=0;j<inputs;j++)
 		{
@@ -51,6 +60,8 @@ int main()
 
 		inputSymbol=65;
 	}
+
+	printf("\n THE NFA CONVERTED TO DFA : ")
 
 	return 0;
 }
