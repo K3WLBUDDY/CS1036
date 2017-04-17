@@ -4,21 +4,25 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 char finalArray[20][10];
 
 int length = 0;
 
-void checkRepeat(int currentLength)
+//Yes yes Global Variables aren't exactly recommended to use but whatever
+
+
+void checkRepeat()
 {
 	int i,j,k, repeatCount;
 	char temp[10];
 
-	for(i=0;i<currentLength;i++)
+	for(i=0;i<length;i++)
 	{
 		strcpy(temp, finalArray[i]);
 		repeatCount=0;
 
-		for(j=0;j<currentLength;j++)
+		for(j=0;j<length;j++)
 		{
 			if(strcmp(temp, finalArray[j])==0)
 				repeatCount++;
@@ -26,9 +30,8 @@ void checkRepeat(int currentLength)
 
 		if(repeatCount>1)
 		{
-			for(k=i;k<currentLength-1;k++)
+			for(k=i;k<length-1;k++)
 				strcpy(finalArray[k], finalArray[k+1]);
-			currentLength--;
 			length--;
 		}
 	}
@@ -112,7 +115,7 @@ int main()
 		for(j=0;j<inputs;j++)
 		{
 			strcpy(finalArray[length++],transition[i][j]);
-			checkRepeat(length);
+			checkRepeat();
 		}
 	
 	}
