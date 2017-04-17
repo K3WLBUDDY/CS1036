@@ -1,6 +1,43 @@
+// Use strtok(str, delimiter). Sends it to a char*. Don't use malloc
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+char finalArray[20][10];
+
+int length = 0;
+
+void checkRepeat(int currentLength)
+{
+	int i,j,k, repeatCount;
+	char temp[10];
+
+	for(i=0;i<currentLength;i++)
+	{
+		strcpy(temp, finalArray[i]);
+		repeatCount=0;
+
+		for(j=0;j<currentLength;j++)
+		{
+			if(strcmp(temp, finalArray[j])==0)
+				repeatCount++;
+		}
+
+		if(repeatCount>1)
+		{
+			for(k=i;k<currentLength-1;k++)
+				strcpy(finalArray[k], finalArray[k+1]);
+			currentLength--;
+			length--;
+		}
+	}
+
+	printf("\n Final Array of Unique Symbols : ");
+
+	for(i=0;i<currentLength;i++)
+		printf("\n\n %s", finalArray[i]);
+}
 
 int main()
 {
@@ -61,7 +98,18 @@ int main()
 		inputSymbol=65;
 	}
 
-	printf("\n THE NFA CONVERTED TO DFA : ")
+	printf("\n THE NFA CONVERTED TO DFA : ");
 
+	strcpy(finalArray[0],"0");
+	length++;
+
+	for(i=0;i<states;i++)
+	{
+		for(j=0;j<inputs;j++)
+		{
+			strcpy(finalArray[length++],transition[i][j]);
+			checkRepeat(length);
+		}
 	return 0;
+	}
 }
