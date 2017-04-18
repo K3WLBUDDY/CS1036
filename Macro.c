@@ -12,14 +12,14 @@ int main()
 {
 	FILE *input, *output;
 	
-	input = fopen("Inputs/MacroInput.txt", "r");
-	output = fopen("Outputs/MacroOutput.txt", "w");
-
 	char label[20], opCode[20], operand[20];
 
 	int macroCount=0, i=0,j=0,len=0;
 
 	struct macro m[100];
+	input = fopen("Inputs/MacroInput.txt", "r");
+	output = fopen("Outputs/MacroOutput.txt", "w");
+
 	
 	strcpy(opCode, "NULL");
 
