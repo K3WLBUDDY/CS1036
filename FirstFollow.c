@@ -4,7 +4,7 @@
 
 int main()
 {
-	int n,i=0,x,j=0;
+	int n,i=0,x,j=0,k=0;
 
 	char terminals[10][10], productions[10][10];
 	char nonTerminal[10];
@@ -45,32 +45,39 @@ int main()
 		if(x>=97)
 			printf("%c", productions[i][0]);
 		else
-		do
 		{
-			printf("\n NOT FIRST");
-			//strcpy(nonTerminal, productions[i][0]);
-			s=productions[i][0];
-			//strcpy(nonTerminal, productions[i]);
-			printf("%c", productions[i][0]);
-
-
-			for(j=0;j<n;j++)
+			j=i;
+			do
 			{
-				if(strcmp(nonTerminal, terminals[i])==0)
+				//printf("\n NOT FIRST");
+				//strcpy(nonTerminal, productions[i][0]);
+				s=productions[j][0];
+				//strcpy(nonTerminal, productions[i]);
+				//printf("%c", productions[i][0]);
+
+
+				for(k=0;k<n;k++)
+				{
+					if(strcmp(nonTerminal, terminals[j])==0)
+						break;
+				}
+				j=k;
+
+				y = productions[j][0];
+
+				if(y>=97)
+				{
+					printf("%c", productions[j][0]);
 					break;
+				}
+				else
+					continue;
+
+				//printf("%c", productions[j][0]);
+				//x=productions[j][0];
 			}
-
-			y = productions[j][0];
-
-			if(y>=97)
-				printf("%c", productions[j][0]);
-			else
-				continue;
-
-			//printf("%c", productions[j][0]);
-			//x=productions[j][0];
+			while(y<=97);
 		}
-		while(y<=97);
 	}
 
 }
