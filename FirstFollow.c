@@ -7,6 +7,7 @@ int main()
 	int n,i=0,x;
 
 	char terminals[10][10], productions[10][10];
+	char nonTerminal[10];
 
 	printf("\n Enter the No. of Productions in the Grammar : ");
 
@@ -40,6 +41,18 @@ int main()
 
 		if(x>=97)
 			printf("%c", productions[i][0]);
+		else
+		{
+			strcpy(nonTerminal, productions[i][0]);
+
+			for(j=0;j<n;j++)
+			{
+				if(strcmp(nonTerminal, terminals[i])==0)
+					break;
+			}
+
+			printf("%c", productions[j][0]);
+		}
 	}
 
 }
