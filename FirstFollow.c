@@ -4,10 +4,12 @@
 
 int main()
 {
-	int n,i=0,x;
+	int n,i=0,x,j=0;
 
 	char terminals[10][10], productions[10][10];
 	char nonTerminal[10];
+
+	char s;
 
 	printf("\n Enter the No. of Productions in the Grammar : ");
 
@@ -38,12 +40,19 @@ int main()
 		printf("\n FIRST OF %s : ", terminals[i]);
 
 		int x = productions[i][0];
+		int y;
 
 		if(x>=97)
 			printf("%c", productions[i][0]);
 		else
+		do
 		{
-			strcpy(nonTerminal, productions[i][0]);
+			printf("\n NOT FIRST");
+			//strcpy(nonTerminal, productions[i][0]);
+			s=productions[i][0];
+			//strcpy(nonTerminal, productions[i]);
+			printf("%c", productions[i][0]);
+
 
 			for(j=0;j<n;j++)
 			{
@@ -51,8 +60,17 @@ int main()
 					break;
 			}
 
-			printf("%c", productions[j][0]);
+			y = productions[j][0];
+
+			if(y>=97)
+				printf("%c", productions[j][0]);
+			else
+				continue;
+
+			//printf("%c", productions[j][0]);
+			//x=productions[j][0];
 		}
+		while(y<=97);
 	}
 
 }
