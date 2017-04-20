@@ -44,11 +44,7 @@ int main()
 	int states, inputs,i=0,j=0,x=0,k=0;
 
 	char transition[10][10][10];
-
-	for(i=0;i<10;i++)
-		for(j=0;j<10;j++)
-			strcpy(transition[i][j], "NULL");
-
+	
 	int size;
 
 	int inputSymbol = 65;
@@ -59,6 +55,12 @@ int main()
 	char *token;
 
 	const char delimiter[2] = ",";
+
+	for(i=0;i<10;i++)
+		for(j=0;j<10;j++)
+			strcpy(transition[i][j], "NULL");
+
+	
 
 	printf("\t\t NFA TO DFA CONVERTER\n");
 
