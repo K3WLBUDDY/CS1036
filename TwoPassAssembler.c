@@ -5,18 +5,20 @@
 int main()
 {
 	FILE *input, *output, *optab, *symbol;
-
-	input = fopen("Outputs/AssemblerPassOneOutput.txt", "r");
-	output = fopen("Outputs/AssemblerPassTwoOutput.txt", "w");
-	optab = fopen("Inputs/AssemblerOptab.txt", "r");
-	symbol = fopen("Outputs/AssemblerSymbol.txt", "r");
-
+	
 	char label[10], mnemonic[5], reg[5], operand[10], regNum[5], locctr[10];
 
 	char sym[10], symAddr[10], mnemAddr[3], mnemInfo[10], symbolAddress[10];
 
 	int count=0;
 
+
+	input = fopen("Outputs/AssemblerPassOneOutput.txt", "r");
+	output = fopen("Outputs/AssemblerPassTwoOutput.txt", "w");
+	optab = fopen("Inputs/AssemblerOptab.txt", "r");
+	symbol = fopen("Outputs/AssemblerSymbol.txt", "r");
+
+	
 	
 
 	strcpy(mnemonic, "NULL");
