@@ -12,7 +12,7 @@ char s;
 
 void first(int index)
 {
-	cd 
+	
 		int x = productions[index][0];
 
 		if(x>=97)
