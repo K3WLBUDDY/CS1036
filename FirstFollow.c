@@ -107,7 +107,11 @@ int main()
 							b=productions[j][pos];
 
 							if(a==b);
+							{	
 								first(l);
+								break;
+							}
+
 						}
 					}
 				}
