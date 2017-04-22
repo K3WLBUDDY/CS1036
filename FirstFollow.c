@@ -5,7 +5,7 @@
 char terminals[10][2], productions[10][10];
 //char nonTerminal[10];
 
-int n,i=0,x,j=0,k=0,len=0,y=0,success=0,z,pos,a,b;
+int n,i=0,x,j=0,k=0,len=0,y=0,success=0,z,pos,a,b,l=0;
 
 char s;
 
@@ -82,40 +82,37 @@ int main()
 	{
 		printf("\n FOLLOW OF %s : ", terminals[i]);
 
-		len=strlen(productions[i]);
-
-		for(j=0;j<len;j++)
+		for(j=0;j<n;j++)
 		{
-			x=productions[i][j];
-			y=terminals[i][0];
-			//if(strcmp(productions[i][j], terminals[i])==0)
-			if(x==y)
+			len = strlen(productions[j]);
+
+			for(k=0;k<len;k++)
 			{
-				pos=j+1;
+				x=productions[j][k];
+				y=terminals[i][0];
 
-				z=productions[i][pos];
+				if(x==y)
+				{
+					pos=j+1;
 
-				if(z>=97)
-					printf("%c", productions[i][pos]);
-				else if(z>=65&&z<=90)
+					z=productions[j][pos];
+
+					if(z>=97)
+						printf("%c", productions[j][pos]);
+					else if(z>=65&&z<=90)
 					{
-						for(k=0;k<n;k++)
+						for(l=0;l<n;l++)
 						{
-							a=terminals[k][0];
-							b=productions[i][pos];
+							a=terminals[l][0];
+							b=productions[j][pos];
 
-							//if(strcmp(terminals[k], productions[i][pos])==0)
-							if(a==b)
-								first(k); 
+							if(a==b);
+								first(l);
 						}
 					}
-				success=1;
+				}
 			}
 		}
-		if(success==0)
-			printf("NULL");
-		success=0;
-
 	}
 	
 	return 0;
