@@ -93,7 +93,7 @@ int main()
 
 				if(x==y)
 				{
-					pos=j+1;
+					pos=k+1;
 
 					z=productions[j][pos];
 
