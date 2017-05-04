@@ -1,3 +1,4 @@
+//© Sruthik P
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -25,16 +26,24 @@ int main()
 	strcpy(mnemInfo, "NULL");
 	strcpy(operand, "NULL");
 
+	//Complicated While loop condition due to the same mnemonic for START and END
 	while(strcmp(operand, "==")!=0 && strcpy(mnemonic, "AD+00")!=0)
 	{
 		fscanf(input, "%s\t%s\t%s\t%s\t%s\t\n", locctr, label, mnemonic, reg, operand);
 
+		/*strncpy creates a substring from a gives string. The substring is copied
+		 *into a char variable. Here mnemonic+2 means the substring to be taken 
+		 *starts from the 2nd INDEX (not the 2nd Character) and the 3 is the length
+		 *of the substring to be taken. Eg : AD+00 is the input and for the
+		 *output to be +00 the Index should be 2 and the length of the string is 3
+		 */
+		
 		strncpy(mnemAddr, mnemonic+2, 3);
 
-		if(strcmp(mnemonic, "AD+01")==0)
+		if(strcmp(mnemonic, "AD+01")==0)//Skips the first Line of the Input File
 			continue;
 		
-		if(strcmp(reg, "==")==0)
+		if(strcmp(reg, "==")==0)//Sets values for the various registers
 			strcpy(regNum, "0");
 
 		else if(strcmp(reg, "AREG")==0)
@@ -49,14 +58,14 @@ int main()
 		else
 			strcpy(regNum, "*");
 
-		while(!feof(symbol))
+		while(!feof(symbol))//Scans till the end of the Symbol Table
 		{
 			fscanf(symbol, "%s\t%s\t\n", sym, symbolAddress);
-			printf("\n %s\t%s\t\n", sym, symbolAddress);
 
 			if(strcmp(sym, operand)==0)
 			{
-				strcpy(symAddr, symbolAddress);
+				//Gets the address of the Current Operand from the Symbol Table
+				strcpy(symAddr, symbolAddress);	
 				break;
 			}
 
@@ -72,6 +81,7 @@ int main()
 
 	}
 
+	//Always close the bloody streams
 	fclose(input);
 	fclose(output);
 	fclose(optab);
