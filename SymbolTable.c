@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+
 int main()
 {
 	char expression[20], search[2];
@@ -29,7 +30,7 @@ int main()
 			
 	}
 
-	printf("\n Enter a Symbol to be Searched for : ");
+	printf("\n Enter the Symbol to be Searched for : ");
 	scanf("%s", search);
 
 	for(i=0;i<length;i++)
@@ -41,5 +42,7 @@ int main()
 		
 	if(flag==0)
 		printf("\n Symbol %s could not be found in the Entered Expression", search, expression);
+
+	return 0;
 
 }
