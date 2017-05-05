@@ -1,7 +1,7 @@
 //© Sruthik P
 #include <stdio.h>
 
-void main()
+int main()
 {
 	char operator[3];
 
@@ -76,4 +76,6 @@ void main()
 		default:
 			printf("\n Invalid Operator");
 	}
+
+	return 0;
 }
