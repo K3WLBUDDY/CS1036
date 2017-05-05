@@ -41,7 +41,7 @@ int main()
 		}
 		
 	if(flag==0)
-		printf("\n Symbol %s could not be found in the Entered Expression", search, expression);
+		printf("\n Symbol %s could not be found in the Expression %s", search, expression);
 
 	return 0;
 
