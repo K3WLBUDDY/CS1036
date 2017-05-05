@@ -1,4 +1,5 @@
 //© Sruthik P
+//TODO - Special Case for input string b -> Accepted by a*b+
 
 /*Primer on Regular Expressions:
  * '*' indicates zero or more occurances of the preceding element
@@ -29,6 +30,8 @@ int main()
 			else
 				flag=0;
 	}
+	
+		flag=2;
 
 	else if(length==0)//Since a* is accepted which means a Null String is accepted too
 		flag=1;
