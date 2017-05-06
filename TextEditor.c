@@ -22,9 +22,9 @@ void read(char fileName[100])
 	{
 		fscanf(s, "%s", buffer);
 		printf("\n Contents of File : %s", buffer);
+		fclose(s);
 	}
 
-	fclose(s);
 }
 
 void write(char fileName[100])
@@ -39,9 +39,9 @@ void write(char fileName[100])
 			printf("\n Enter the Contents to be written : ");
 			scanf("%s", buffer);
 			fprintf(s, "%s", buffer);
+			fclose(s);
 		}
-
-	fclose(s);
+	
 }
 
 void create(char fileName[100])
