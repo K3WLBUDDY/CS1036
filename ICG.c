@@ -8,17 +8,21 @@ int main()
 {
 	char expression[10];
 	int length,i,regNo=0;
+	char operands[10][2],count=0;
+	char result;
 
-	printf("\n Enter an Expression : ");
+	printf("\n Enter an Expression : ");//Example Input : d=a+b
 	scanf("%s", expression);
 
 	length = strlen(expression);
 
 	for(i=0;i<length;i++)
-	{
-		if(isalnum(expression[i]))
+		if(isalnum(expression[i])&&expression[i+1]!='=')
 			printf("\n MOV %c R%d",expression[i], regNo++);
-		else if(expression[i]=='+')
+
+	for(i=0;i<length;i++)
+	{
+		if(expression[i]=='+')
 			printf("\n ADD R0 R1");
 		else if(expression[i]=='-')
 			printf("\n SUB R0 R1");
@@ -26,10 +30,10 @@ int main()
 			printf("\n DIV R0 R1");
 		else if(expression[i]=='*')
 			printf("\n MUL R0 R1");
-		else if(expression[i]=='=')
-			printf("\n MOV %c R1", expression[0]);
-
 	}
+
+	if(expression[1]=='=')
+		printf("\n MOV R1 %c", expression[0]);
 
 	return 0;
 }
