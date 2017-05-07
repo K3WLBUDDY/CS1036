@@ -22,7 +22,7 @@ void leading(char production)
 				
 				s=productions[i][k];
 
-				if(s>=65&&s<=90)
+				if(s>=65&&s<=90&&k==0)
 				{
 					leading(productions[i][k]);
 					for(l=0;l<n;l++)
@@ -30,7 +30,7 @@ void leading(char production)
 							strcpy(leadingArray[i], leadingArray[l]);
 					j=strlen(leadingArray[i]);
 				}
-				else
+				else if(s>=97)
 					leadingArray[i][j++]=productions[i][k];
 				k++;
 			}
