@@ -55,34 +55,28 @@ int main()
 		}
 	}
 
-	printf("\n CHild Expression : ");
-	for(i=0;i<count;i++)
-		printf("\n\n %s", childExp[i]);
-
 	len=length-leftPar*2;
 
-	for(i=1;i<len;i++)
-	{
-		for(j=0;j<count;j++)
-		{	
-			found=0;
+	k=1;
 
-			for(k=0;childExp[j][k]!='\0';k++)
+	for(i=0;i<count;i++)
+	{
+		for(j=0;childExp[i][j]!='\0';j++)
+		{
+			if(!isalnum(childExp[i][j]))
 			{
-				if(!isalnum(childExp[j][k])&&found==0)
-				{
-					found=1;
-					finalArray[i]=childExp[j][k]; 
-				}
-				else if(isalnum(childExp[j][k])&&found==1)
-					finalArray[i]=childExp[j][k];
+				finalArray[k]=childExp[i][j]; 
+				finalArray[++k]=childExp[i][j-1];
+				finalArray[++k]=childExp[i][j+1];
+				k++;
+				break;
 			}
 		}
 	}
 
-	printf("\n Contents of DAG and Length : \n  %d ", len);
+	printf("\n Contents of DAG : ");
 	for(i=0;i<len;i++)
-		printf("\n\n teest %c", finalArray[i]);
+		printf("\n\n  %c", finalArray[i]);
 
 	return 0;
 }
