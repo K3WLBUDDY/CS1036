@@ -37,8 +37,8 @@ void leading(char production)
 					
 					for(l=0;l<n;l++)
 						if(nonTerminals[l][0]==s)
-							strcpy(leadingArray[i], leadingArray[l])
-					k=strlen(leadingArray[i]);
+							strcpy(leadingArray[i], leadingArray[l]);
+					k=strlen(leadingArray[i]);//To move the Array Pointer to the end
 				}
 				else if(s>=97)//Just add the Symbol into the array if it's a small letter (Terminal)
 					leadingArray[i][k++]=productions[i][j];
@@ -56,6 +56,7 @@ void trailing(char production)
 		if(production==nonTerminals[i][0])
 		{
 			k=0;
+			//j=strlen(productions[i])-1 because j must point to the final index of the array
 			for(j=strlen(productions[i])-1;j>=0;j--)//Logic is same as Leading but traversal is done from R-L
 			{
 				s=productions[i][j];
