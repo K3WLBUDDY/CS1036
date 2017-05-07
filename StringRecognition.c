@@ -30,6 +30,8 @@ int main()
 			else
 				flag=0;
 	}
+	else if(input[0]='b')
+		flag=2;
 	
 		
 
