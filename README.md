@@ -22,7 +22,7 @@
 * Shift Reduce Parser
 * Predictive Parser
 * Leading and Trailing
-* Intermediate Code Generator
+* Intermediate Code Generator <img src="https://github.com/K3WLBUDDY/CS1036/blob/master/tick.png" alt="Completed" width="20" height="20">
 * Directed Acyclic Graph
 
 ## The easy ones will come for sure. Focus on them First.
