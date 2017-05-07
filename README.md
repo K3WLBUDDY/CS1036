@@ -21,7 +21,7 @@
 * LR(0) Parser <img src="https://github.com/K3WLBUDDY/CS1036/blob/master/tick.png" alt="Completed" width="20" height="20">
 * Shift Reduce Parser
 * Predictive Parser
-* Leading and Trailing
+* Leading and Trailing <img src="https://github.com/K3WLBUDDY/CS1036/blob/master/tick.png" alt="Completed" width="20" height="20">
 * Intermediate Code Generator <img src="https://github.com/K3WLBUDDY/CS1036/blob/master/tick.png" alt="Completed" width="20" height="20">
 * Directed Acyclic Graph <img src="https://github.com/K3WLBUDDY/CS1036/blob/master/tick.png" alt="Completed" width="20" height="20">
 
