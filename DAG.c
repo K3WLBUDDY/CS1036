@@ -5,17 +5,13 @@
  *Interior Nodes must be either Operators or Results of Concatenated Operations
  */
 
+
+/* Currently the Code does not take into Consideration any Nodes/Childs/Pointers 
+ * because the Record output is wrong and I'm lazy. Will add Nodes in some time
+ */
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
-/*
-struct node
-{
-	int leftChild, rightChild;
-	char contents[3];
-};
-*/
 
 int main()
 {
@@ -24,9 +20,7 @@ int main()
 	char childExp[100][10];
 	char finalArray[100];
 
-	//struct node n[100];
-
-	printf("\n Enter an Expression with Parenthesis : "); //For brevity consider d=(a+b)*(e+f)
+	printf("\n Enter an Expression with Parenthesis : "); //For brevity consider (a+b)*(c+d)
 	scanf("%s", expression);
 
 	length = strlen(expression);
@@ -55,7 +49,13 @@ int main()
 		}
 	}
 
-	len=length-leftPar*2;
+	if(leftPar!=rightPar)
+	{
+		printf("\n Incorrect Expression!");
+		return 0;
+	}
+
+	len=length-leftPar*2;//The Length of the Expression without the Parenthesis
 
 	k=1;
 
@@ -66,7 +66,7 @@ int main()
 			if(!isalnum(childExp[i][j]))
 			{
 				finalArray[k]=childExp[i][j]; 
-				finalArray[++k]=childExp[i][j-1];
+				finalArray[++k]=childExp[i][j-1];//Gets the Operands of the Current Operator
 				finalArray[++k]=childExp[i][j+1];
 				k++;
 				break;
