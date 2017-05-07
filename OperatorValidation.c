@@ -39,7 +39,7 @@ int main()
 			break;
 
 		case '!':
-			if(operator[1]=='!')
+			if(operator[1]=='=')
 				printf("Logical NOT");
 			else
 				printf("Bitwise NOT");
