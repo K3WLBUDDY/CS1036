@@ -14,9 +14,13 @@ int main()
 	length = strlen(identifier);
 
 	for(i=0;i<length;i++)
-		if(!isalnum(identifier[i])||isalpha(identifier[0])==0)
+	{
+		if(identifier[i]=='_')
 			flag=1;
-
+		else if(!isalnum(identifier[i])||!isalpha(identifier[0]))
+			flag=1;
+	}
+	
 	if(flag==0)
 		printf("\n %s is a Valid Identifier", identifier);
 	else
