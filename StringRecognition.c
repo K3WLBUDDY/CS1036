@@ -31,7 +31,7 @@ int main()
 				flag=0;
 	}
 	
-		flag=2;
+		
 
 	else if(length==0)//Since a* is accepted which means a Null String is accepted too
 		flag=1;
