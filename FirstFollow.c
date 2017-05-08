@@ -4,46 +4,26 @@
 
 char terminals[10][2], productions[10][10];
 //char nonTerminal[10];
+char firstArray[10][10];
 
 int n,i=0,x,j=0,k=0,len=0,y=0,success=0,z,pos,a,b,l=0;
 
 char s;
 
 
-void first(int index)
+void first(char production,int index)
 {
-	
-		int x = productions[index][0];
+	int s = production;
 
-		if(x>=97)
-			printf("%c", productions[index][0]);
-		else
-		{
-			s=productions[index][0];
-			x=productions[index][0];
 
-			l1:
-				for(k=0;k<n;k++)
-				{
-					z = terminals[k][0];
-					
-					if(x==z)
-					{
-						y=productions[k][0];
-						s=productions[k][0];
-					}
-					
-				}
+	if(s>=97)
+		firstArray[index][0]=production;
 
-				if(y>=97)
-					printf("%c", s);
-				
-				else
-				{
-					x=s;
-					goto l1;
-				}
-		}
+	else if(s>=65&&s<=90)
+		for(i=0;i<n;i++)
+			if(terminals[i][0]==production)
+				first(production, index);
+						
 }
 
 int main()
@@ -75,9 +55,11 @@ int main()
 	for(i=0;i<n;i++)
 	{
 		printf("\n FIRST OF %s : ", terminals[i]);
-		first(i);
+		first(productions[i][0],i);
+		printf(" %s ", firstArray[i]);
 	}
 	
+	/*
 	for(i=0;i<n;i++)
 	{
 		printf("\n FOLLOW OF %s : ", terminals[i]);
@@ -118,6 +100,7 @@ int main()
 			}
 		}
 	}
+	*/
 	
 	return 0;
 
