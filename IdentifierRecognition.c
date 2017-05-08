@@ -3,6 +3,10 @@
 #include <ctype.h>
 #include <string.h>
 
+/* A valid Identifier cannot start with a number or
+ * have any special characters inbetween except for underscore "_"
+ */
+
 int main()
 {
 	char identifier[20];
@@ -15,7 +19,7 @@ int main()
 
 	for(i=0;i<length;i++)
 	{
-		if(identifier[i]=='_')
+		if(identifier[i]=='_')//Special Case for underscore
 			flag=1;
 		else if(!isalnum(identifier[i])||!isalpha(identifier[0]))
 			flag=1;
