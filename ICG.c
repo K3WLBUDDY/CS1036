@@ -17,7 +17,7 @@ int main()
 	length = strlen(expression);
 
 	for(i=0;i<length;i++)
-		if(isalnum(expression[i])&&expression[i+1]!='=')
+		if(isalnum(expression[i])&&expression[i+1]!='=')//Checks if the current symbol is a variable and not LHS
 			printf("\n MOV %c R%d",expression[i], regNo++);
 
 	for(i=0;i<length;i++)
@@ -32,7 +32,7 @@ int main()
 			printf("\n MUL R0 R1");
 	}
 
-	if(expression[1]=='=')
+	if(expression[1]=='=')//Checks if an = is present to move results to LHS
 		printf("\n MOV R1 %c", expression[0]);
 
 	return 0;
