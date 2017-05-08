@@ -4,6 +4,7 @@
 
 char terminals[10][2], productions[10][10];
 char firstArray[10][10];
+char followArray[10][10];
 
 int n,i=0,x,j=0,k=0,len=0,y=0,success=0,z,pos,a,b,l=0;
 
@@ -37,9 +38,34 @@ void first(char production,int index)
 						
 }
 
+void follow(char production, int position, int index, int count)
+{
+	int z=0;
+	int a;
+	int s=productions[position][++count];
+	char next=productions[position][count];
+
+	if(s>=97)
+		followArray[index][z++]=next;
+
+	else if(s>=65&&s<=90)
+	{
+		for(a=0;a<n;a++)
+			if(terminals[a][0]==next)
+				strcpy(followArray[index], firstArray[a]);
+	}
+
+	else 
+	{
+		strcpy(followArray[index], followArray[position]);
+	}
+}
+
 int main()
 {
 	
+	int z;
+
 	printf("\n Enter the No. of Productions in the Grammar : ");
 
 	scanf("%d", &n);
@@ -63,13 +89,34 @@ int main()
 		printf("\n\n %s -----> %s", terminals[i], productions[i]);
 	}
 
+	printf("\t FIRST : \n");
 	for(i=0;i<n;i++)
 	{
-		printf("\n FIRST OF %s : ", terminals[i]);
+		printf("\n %s : ", terminals[i]);
 		first(productions[i][0],i);
 		printf(" %s ", firstArray[i]);
 	}
-	
+
+	printf("\n FOLLOW : \n");
+	for(i=0;i<n;i++)
+	{
+		printf("\n %s : ", terminals[i]);
+
+		for(z=0;z<n;z++)
+		{	
+			count=0;
+
+			while(productions[z][count]!='\0')
+			{
+				if(terminals[i]==productions[z][count])
+					follow(Productions[z][count], z, i,count);
+				count++;
+			}
+		}
+
+		printf(" %s ", followArray[i]);
+
+	}
 	
 	return 0;
 
