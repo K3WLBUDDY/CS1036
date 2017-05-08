@@ -6,7 +6,7 @@ char terminals[10][2], productions[10][10];
 char firstArray[10][10];
 char followArray[10][10];
 
-int n,i=0,x,j=0,k=0,len=0,y=0,success=0,z,pos,a,b,l=0;
+int n,i=0,x,j=0,k=0,len=0,y=0,success=0,pos,a,b,l=0;
 
 char s;
 
@@ -64,7 +64,7 @@ void follow(char production, int position, int index, int count)
 int main()
 {
 	
-	int z;
+	int z,count=0;
 
 	printf("\n Enter the No. of Productions in the Grammar : ");
 
@@ -82,14 +82,8 @@ int main()
 		scanf("%s", &productions[i]);
 	}
 
-	printf("\n The Entered Grammar is :");
-
-	for(i=0;i<n;i++)
-	{
-		printf("\n\n %s -----> %s", terminals[i], productions[i]);
-	}
-
-	printf("\t FIRST : \n");
+	
+	printf("\n FIRST : \n");
 	for(i=0;i<n;i++)
 	{
 		printf("\n %s : ", terminals[i]);
@@ -108,8 +102,8 @@ int main()
 
 			while(productions[z][count]!='\0')
 			{
-				if(terminals[i]==productions[z][count])
-					follow(Productions[z][count], z, i,count);
+				if(terminals[i][0]==productions[z][count])
+					follow(productions[z][count], z, i,count);
 				count++;
 			}
 		}
