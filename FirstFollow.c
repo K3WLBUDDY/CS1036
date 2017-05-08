@@ -3,7 +3,6 @@
 #include <string.h>
 
 char terminals[10][2], productions[10][10];
-//char nonTerminal[10];
 char firstArray[10][10];
 
 int n,i=0,x,j=0,k=0,len=0,y=0,success=0,z,pos,a,b,l=0;
@@ -13,6 +12,7 @@ char s;
 
 void first(char production,int index)
 {
+	int x,l,z;
 	int s = production;
 
 
@@ -20,9 +20,20 @@ void first(char production,int index)
 		firstArray[index][0]=production;
 
 	else if(s>=65&&s<=90)
-		for(i=0;i<n;i++)
-			if(terminals[i][0]==production)
-				first(production, index);
+	{
+		for(x=0;x<n;x++)
+		{
+			if(terminals[x][0]==production)
+			{	
+				j=x;
+				first(productions[j][0], j);
+				for(l=0;l<n;l++)
+					if(terminals[l][0]==production)
+						firstArray[index][0]=firstArray[l][0];
+			}
+		}
+
+	}
 						
 }
 
@@ -59,48 +70,6 @@ int main()
 		printf(" %s ", firstArray[i]);
 	}
 	
-	/*
-	for(i=0;i<n;i++)
-	{
-		printf("\n FOLLOW OF %s : ", terminals[i]);
-
-		for(j=0;j<n;j++)
-		{
-			len = strlen(productions[j]);
-
-			for(k=0;k<len;k++)
-			{
-				x=productions[j][k];
-				y=terminals[i][0];
-
-				if(x==y)
-				{
-					pos=k+1;
-
-					z=productions[j][pos];
-
-					if(z>=97)
-						printf("%c", productions[j][pos]);
-					else if(z>=65&&z<=90)
-					{
-						for(l=0;l<n;l++)
-						{
-							a=terminals[l][0];
-							b=productions[j][pos];
-
-							if(a==b);
-							{	
-								first(l);
-								break;
-							}
-
-						}
-					}
-				}
-			}
-		}
-	}
-	*/
 	
 	return 0;
 
