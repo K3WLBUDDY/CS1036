@@ -22,7 +22,6 @@ int main()
 	char expression[100];
 	int length, leftPar=0, rightPar=0,count=0,len=0,found=0,i,j,k,childLength;
 	char childExp[100][10];
-	char finalArray[100];
 	struct node n[100];
 
 	printf("\n Enter an Expression with Parenthesis : "); //For brevity consider (a+b)*(c+d)
@@ -34,7 +33,7 @@ int main()
 	{
 		if(expression[i] == '(')
 		{
-			leftPar++;
+			leftPar++;//Holds the count of the No. of Left parenthesis
 			childLength=0;
 
 			k=i+1;
@@ -43,39 +42,38 @@ int main()
 				childExp[count][childLength++]=expression[k];
 				k++;
 			}
-
-			count++;
+			
 		}
 		else if(expression[i] == ')')
 		{
-			if(expression[i+2]=='('&& !isalnum(expression[i+1]))
-				n[0].contents[0]=expression[i+1];
-			rightPar++;
+			if(expression[i+2]=='('&& !isalnum(expression[i+1]))//Checks if an operator is inbetween ) and (
+				n[0].contents[0]=expression[i+1];//If yes it becomes the root operator
+			rightPar++;//Holds the count of the No. of Right Parenthesis
 		}
 	}
 
-	if(leftPar!=rightPar)
+	if(leftPar!=rightPar)//For a correct Expression the No. of left and right Pars must be equal
 	{
 		printf("\n Incorrect Expression!");
 		return 0;
 	}
 
-	len=length-leftPar*2;//The Length of the Expression without the Parenthesis
+	len=length-leftPar*2;//The Length of the Expression without the Parenthesis. Leftpar*2 because the count is same
 
 	for(i=0;i<len;i++)
+		//Initializing the Left and Right child fields of nodes with UNDEFINED
 		n[i].leftChild=n[i].rightChild=UNDEFINED;
-
 	k=1;
 
 	for(i=0;i<count;i++)
 	{
 		for(j=0;childExp[i][j]!='\0';j++)
 		{
-			if(!isalnum(childExp[i][j]))
+			if(!isalnum(childExp[i][j]))//Pushes Operators into the Nodes
 			{
 				n[k].contents[0]=childExp[i][j]; 
-				n[++k].contents[0]=childExp[i][j-1];//Gets the Operands of the Current Operator
-				n[++k].contents[0]=childExp[i][j+1];
+				n[++k].contents[0]=childExp[i][j-1];//Gets the Previous Operand of the Current Operator
+				n[++k].contents[0]=childExp[i][j+1];//Gets the Next Operand
 				k++;
 				break;
 			}
@@ -84,7 +82,7 @@ int main()
 
 	for(i=1;i<len;i++)
 	{
-		if(!isalnum(n[i].contents[0])&&n[0].leftChild==UNDEFINED)
+		if(!isalnum(n[i].contents[0])&&n[0].leftChild==UNDEFINED)//Figures out the Childs for all Nodes
 		{
 			n[0].leftChild=i;
 			n[i].leftChild=i+1;
