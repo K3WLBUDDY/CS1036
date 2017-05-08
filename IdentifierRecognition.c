@@ -20,7 +20,7 @@ int main()
 	for(i=0;i<length;i++)
 	{
 		if(identifier[i]=='_')//Special Case for underscore
-			flag=1;
+			flag=0;
 		else if(!isalnum(identifier[i])||!isalpha(identifier[0]))
 			flag=1;
 	}
