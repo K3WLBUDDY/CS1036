@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* To be on the safe side give the following as the input:
+ * No. of Productions : 3
+ * Non Terminals : S A B
+ * S -> ASB
+ * A -> aSb
+ * B -> b
+ */
+
 char terminals[10][2], productions[10][10];
 char firstArray[10][10];
 char followArray[10][10];
